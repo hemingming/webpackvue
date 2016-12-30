@@ -11,22 +11,29 @@ Vue.config.debug = true;
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
-// 定义组件, 也可以像教程之前教的方法从别的文件引入
-const First = { template: '<div><h2>我是第 1 个子页面</h2></div>' }
 
-import second from './component/second.vue'
+//const First = { template: '<div><h2>1  {{ $route.params.id }} </h2></div>' }
+import First from './component/index.vue'
+import second2 from './component/second.vue'
+
+const Seconds = resolve => require(['./component/second.vue'], resolve)
 
 const router = new VueRouter({
 	mode: 'history',
 	base: __dirname,
 	routes: [
 		{
-			path: '/first',
-			component: First
+			path: '/first/:id',
+			name: 'first',
+			component: First,
+			children : [{
+				path: 'more',
+          		component: second2
+			}]
 		},
 		{
 			path: '/second',
-			component: second
+			component: Seconds
 		}
 	]
 })
