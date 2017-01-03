@@ -23,6 +23,10 @@ const router = new VueRouter({
 	base: __dirname,
 	routes: [
 		{
+			path: '/',
+			component: First
+		},
+		{
 			path: '/first/:id',
 			name: 'first',
 			component: First,
@@ -33,7 +37,7 @@ const router = new VueRouter({
 		},
 		{
 			path: '/second',
-			component: Seconds
+			component: second2
 		}
 	]
 })

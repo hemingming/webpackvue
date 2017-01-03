@@ -1,0 +1,22 @@
+/*h5 reset*/
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,dl, dt, dd, ol, ul, li, fieldset, form, label, table, tbody, tfoot, thead, tr, th, td, article, aside, footer, header, nav, section{
+margin:0;padding:0;outline:0 none;}
+html{-webkit-text-size-adjust:none;}
+body{font-size:0.16rem;font-family:Arial,'Microsoft YaHei';}
+a,button,input,div{
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent; /* For some Androids */
+}
+a,a:visited{color:#333;text-decoration:none}
+img{-webkit-box-sizing: border-box;box-sizing: border-box;vertical-align: middle;border:0;}
+input,textarea{-webkit-user-select:text;-ms-user-select:text;user-select:text;-webkit-appearance:none;}
+input:focus,select:focus,textarea:focus,button:focus{outline:none;}
+input[type="text"],input[type="password"],input[type="search"],input[type="tel"],input[type="number"],input[type="email"],input[type="url"],textarea{
+ -webkit-appearance:none;}
+input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;}
+a{text-decoration:none;-webkit-touch-callout:none;/*禁用默认触发*/}em,i{font-style:normal;}
+li{list-style:none;}
+input::-webkit-input-placeholder{color:#ccc;}  /*文字提示颜色*/
+input:focus::-webkit-input-placeholder{color:#ccc;}
+.clearfix:after {content:"."; display:block; height:0; clear:both; visibility:hidden}
+.clearfix{*zoom:1}
