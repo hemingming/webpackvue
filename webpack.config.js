@@ -40,17 +40,42 @@ module.exports = {
           test: /\.css$/,
           loader: "style!css"
       },
+      /*
+      {
+        test:/\.(woff|svg|eot|ttf)\??.*$/,
+        loader: 'url-loader?name=fonts/[name].[md5:hash:hex:7].[ext]'
+      }
+      
       {
         test: /\.(eot|woff|woff2|ttf)([\?]?.*)$/,
         loader: "file"
-      },
+      },*/
+
+      { 
+        test: /\.(woff|svg|eot|ttf)\??.*$/, 
+        loader: 'url-loader?limit=50000&name=[path][name].[ext]'
+      }
+      
     ]
   },
   resolve: {
     alias: {
-      'vue': 'vue/dist/vue.js'
+      'vue': 'vue/dist/vue.js',
+      'assets': path.resolve(__dirname, '../src/assets')
     }
   },
+  /*
+  resolve: {
+    extensions: ['', '.js', '.vue'],
+    fallback: [path.join(__dirname, '../node_modules')],
+    alias: {
+      'vue$': 'vue/dist/vue.js',
+      'src': path.resolve(__dirname, '../src'),
+      
+      'components': path.resolve(__dirname, '../src/components')
+    }
+  },
+  */
   devServer: {
     historyApiFallback: true,
     noInfo: true

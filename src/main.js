@@ -1,4 +1,5 @@
 import Vue from 'vue'
+
 import App from './App.vue'
 
 import VueRouter from 'vue-router'
@@ -13,10 +14,14 @@ Vue.use(VueResource);
 
 
 //const First = { template: '<div><h2>1  {{ $route.params.id }} </h2></div>' }
-import First from './component/index.vue'
-import second2 from './component/second.vue'
 
-const Seconds = resolve => require(['./component/second.vue'], resolve)
+import index from './component/index.vue'
+import home from './component/home.vue'
+import list from './component/list.vue'
+import mine from './component/mine.vue'
+import header from './component/header.vue'
+
+const Seconds = resolve => require(['./component/list.vue'], resolve)
 
 const router = new VueRouter({
 	mode: 'history',
@@ -24,24 +29,31 @@ const router = new VueRouter({
 	routes: [
 		{
 			path: '/',
-			component: First
+			component: home
 		},
 		{
-			path: '/first/:id',
-			name: 'first',
-			component: First,
+			path: '/home',
+			component: home
+		},
+		{
+			path: '/list',
+			component: list
+		},
+		{
+			path: '/list/:id',
+			name: 'list',
+			component: list,
 			children : [{
 				path: 'more',
-          		component: second2
+          		component: list
 			}]
 		},
 		{
-			path: '/second',
-			component: second2
+			path: '/mine',
+			component: mine
 		}
 	]
 })
-
 
 const app = new Vue({
 	router: router,

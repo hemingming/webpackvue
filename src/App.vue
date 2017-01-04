@@ -1,24 +1,27 @@
 <template>
 
   <div id="app">
-      <img src="./assets/logo.png">
-      <footer class="ion-tabs tabs-light">
-        <div class="ion-tab" >
-          <router-link to="/">
-              <i class=""></i>
-              <div class="tab-tro">首页</div>
+    <header>
+      logo
+    </header>
+
+      <footer class="app-tabs">
+        <div class="button" >
+          <router-link to="/home">
+              <i class="icon iconfont">&#xe606;</i>
+              <div class="tab-text">首页</div>
           </router-link>
         </div>
-        <div class="ion-tab">
-            <router-link to="/first/asdasdasd11111111111md5">
-                <i class=""></i>
-                <div class="tab-tro">列表</div>
+        <div class="button">
+            <router-link to="/list">
+                <i class="icon iconfont">&#xe604;</i>
+                <div class="tab-text">列表</div>
             </router-link>
         </div>
-        <div class="ion-tab">
-            <router-link to="/second">
-              <i class=""></i>
-              <div class="tab-tro">帐户</div>
+        <div class="button">
+            <router-link to="/mine">
+              <i class="icon iconfont">&#xe602;</i>
+              <div class="tab-text">帐户</div>
             </router-link>
         </div>
       </footer>
@@ -29,43 +32,30 @@
 
 
 <script>
+
 import index from './component/index.vue'
-import second from './component/second.vue'
+
 
 export default {
   data () {
     return {
-      msg: 'Fuck Vue!'
+
     }
   },
-  components: { index, second}
+  components: { 
+    index
+  }
+  
 }
 </script>
 
 <style>
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,dl, dt, dd, ol, ul, li, fieldset, form, label, table, tbody, tfoot, thead, tr, th, td, article, aside, footer, header, nav, section{
-margin:0;padding:0;outline:0 none;}
-html{-webkit-text-size-adjust:none;}
-body{font-size:0.16rem;font-family:Arial,'Microsoft YaHei';}
-a,button,input,div{
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
-        -webkit-tap-highlight-color: transparent; /* For some Androids */
-}
-a,a:visited{color:#333;text-decoration:none}
-img{-webkit-box-sizing: border-box;box-sizing: border-box;vertical-align: middle;border:0;}
-input,textarea{-webkit-user-select:text;-ms-user-select:text;user-select:text;-webkit-appearance:none;}
-input:focus,select:focus,textarea:focus,button:focus{outline:none;}
-input[type="text"],input[type="password"],input[type="search"],input[type="tel"],input[type="number"],input[type="email"],input[type="url"],textarea{
- -webkit-appearance:none;}
-input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;}
-a{text-decoration:none;-webkit-touch-callout:none;/*禁用默认触发*/}em,i{font-style:normal;}
-li{list-style:none;}
-input::-webkit-input-placeholder{color:#ccc;}  /*文字提示颜色*/
-input:focus::-webkit-input-placeholder{color:#ccc;}
-.clearfix:after {content:"."; display:block; height:0; clear:both; visibility:hidden}
-.clearfix{*zoom:1}
+@import "./assets/styles/base.css";
+@import "./assets/styles/iconfont/iconfont.css";
 
-.ion-tabs {
+#app{margin:1rem 0;}
+footer{background:#fff;z-index:9;}
+.app-tabs {
     display: -webkit-box;
     display: -moz-box;
     display: -webkit-flex;
@@ -78,15 +68,7 @@ input:focus::-webkit-input-placeholder{color:#ccc;}
     -webkit-align-items: center;
     -moz-align-items: center;
     -ms-flex-align: center;
-    align-items: center
-}
-
-.ion-tabs-up {
-    width: 100%;
-    height: 2.5rem
-}
-
-.ion-tabs {
+    align-items: center;
     position: fixed;
     z-index: 1000;
     bottom: 0;
@@ -98,7 +80,7 @@ input:focus::-webkit-input-placeholder{color:#ccc;}
 }
 
 
-.ion-tabs .ion-tab {
+.app-tabs .button {
     -webkit-box-flex: 1;
     -moz-box-flex: 1;
     box-flex: 1;
@@ -117,27 +99,27 @@ input:focus::-webkit-input-placeholder{color:#ccc;}
     text-align: center
 }
 
-.ion-tabs .ion-tab a {
+.app-tabs .button a {
     display: block;
     font-size: 0;
     line-height: 1;
 }
 
-.ion-tabs .ion-tab i {
-    font-size: 1.25rem;
+.app-tabs .button i {
+    font-size: .6rem;
     line-height: 1;
-    color: #555555
+    color: #555
 }
 
-.ion-tabs .ion-tab .tab-tro {
-    font-size: .4rem;
-    color: #333333;
+.app-tabs .button .tab-text {
+    font-size: .2rem;
+    color: #333;
     line-height: 1
 }
 
-.ion-tabs .ion-tab.active i,
-.ion-tabs .ion-tab.active .tab-tro {
-    color: #e6133c
+.app-tabs .button .router-link-active i,
+.app-tabs .button .router-link-active .tab-text {
+    color: #f55
 }
 
 

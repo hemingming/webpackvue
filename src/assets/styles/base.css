@@ -20,3 +20,4 @@ input::-webkit-input-placeholder{color:#ccc;}  /*文字提示颜色*/
 input:focus::-webkit-input-placeholder{color:#ccc;}
 .clearfix:after {content:"."; display:block; height:0; clear:both; visibility:hidden}
 .clearfix{*zoom:1}
+html,body{max-width:750px;margin:0 auto;}

@@ -5,19 +5,18 @@
 		  <div class="swiper-wrapper">
 
 		    <div class="swiper-slide">
-		      <img class="imgload" src="http://mooc.inxedu.com/images/upload/image/20151026/1446026886181.jpg" alt="首页banner图片01">
+		      <img class="imgload" src="http://img.iblimg.com/market-1/images/content/2016/10/287631970.jpg" alt="首页banner图片01">
 		    </div>
 		    <div class="swiper-slide">
-		      <img class="imgload" src="http://mooc.inxedu.com/images/upload/image/20151026/1446026905031.jpg" alt="首页banner图片02">
+		      <img class="imgload" src="http://img.iblimg.com/market-1/images/content/2016/10/287631970.jpg" alt="首页banner图片02">
 		    </div>
-		    <div class="swiper-slide">Slide 3</div>
+		    <div class="swiper-slide">
+		    	<img class="imgload" src="http://img.iblimg.com/market-1/images/content/2016/10/287631970.jpg" alt="首页banner图片03">
+		    </div>
 		  </div>
 		  <!-- 如果需要分页器 -->
 		  <div class="swiper-pagination"></div>
 
-		  <!-- 如果需要导航按钮 -->
-		  <div class="swiper-button-prev"></div>
-		  <div class="swiper-button-next"></div>
 		</div>
 
 		<h1>初始页</h1>
@@ -41,18 +40,20 @@
 		       direction: 'horizontal',
 		       loop: true,
 		       pagination: '.swiper-pagination',
-		       nextButton: '.swiper-button-next',
-		       prevButton: '.swiper-button-prev'
+		       autoplay: 5000
+		       //nextButton: '.swiper-button-next',
+		       //prevButton: '.swiper-button-prev'
 		     })
-
 		}
 	}
-	
 </script>
 
 <style>
 @import "../assets/styles/swiper-3.4.1.min.css";
-.swiper-container{
-	height: 200px;
+.swiper-container,.swiper-container img{
+	width: 100%;
+	height: auto;
 }
+.swiper-pagination-bullet-active{background:#fff}
+
 </style>
