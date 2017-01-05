@@ -2,7 +2,7 @@
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,dl, dt, dd, ol, ul, li, fieldset, form, label, table, tbody, tfoot, thead, tr, th, td, article, aside, footer, header, nav, section{
 margin:0;padding:0;outline:0 none;}
 html{-webkit-text-size-adjust:none;}
-body{font-size:0.16rem;font-family:Arial,'Microsoft YaHei';}
+body{font-size:0.18rem;font-family:Arial,'Microsoft YaHei';}
 a,button,input,div{
         -webkit-tap-highlight-color: rgba(0,0,0,0);
         -webkit-tap-highlight-color: transparent; /* For some Androids */
@@ -20,4 +20,4 @@ input::-webkit-input-placeholder{color:#ccc;}  /*文字提示颜色*/
 input:focus::-webkit-input-placeholder{color:#ccc;}
 .clearfix:after {content:"."; display:block; height:0; clear:both; visibility:hidden}
 .clearfix{*zoom:1}
-html,body{max-width:750px;margin:0 auto;}
+html,body{max-width:768px;margin:0 auto;}

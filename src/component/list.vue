@@ -1,29 +1,33 @@
 <template>
-	<div id="second">
-    <h1>列表页</h1>
-    <div><h2>id:  {{ $route.params.id }} </h2></div>
-    <a><router-link to="/list/asdasdasd11111111111md5/more">点我跳转到子页</router-link></a>
-		<div class="loading" v-if="loading">
-			Loading...
-		</div>
+    <div>
+    <!--
+      <div><h2>id:  {{ $route.params.id }} </h2></div>
+      <router-link to="/list/asdasdasd11111111111md5/more">点我跳转到子页</router-link>
+		-->
+    <header>
+        <a href="javascript:history.go(-1);" class="back"><i class="icon iconfont">&#xe621;</i></a>
+        {{name}}
+    </header>
+    <div class="load-container load7"  v-if="loading">
+      <div class="loader">Loading...</div>
+    </div>
 
-		<div v-for="item in items" class="text item">
-		{{item.title}}
+    <section class="items clearfix">
+      <div class="product"  v-for="item in items">
+        <div class="pic"><img :src="item.pic_path"></div>
+        <span class="name">{{item.title}}</span>
+        <span class="price">&yen; {{item.price}}</span>
+      </div>
+    </section>
 
-    <img :src="item.pic_path">
-
-		</div>
-		
-		<a> {{ author }} </a>
-
-	</div>
+    </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      author: "Ming",
+      name: "list",
       loading: false,
       items: [],
     }
@@ -36,13 +40,16 @@ export default {
         },
         emulateJSON: true
     }).then(function(response) {
-      // 这里是处理正确的回调
-      	this.loading = false;
-
-        console.log(response.data.itemsArray);
+        //结果回调 处理淘宝图片
+        for(let i =0; i<response.data.itemsArray.length;i+=1){
+          response.data.itemsArray[i].pic_path = response.data.itemsArray[i].pic_path.split('_60x60.jpg')[0];
+          
+        }
         this.items = response.data.itemsArray;
-        // this.articles = response.data["subjects"] 也可以
-
+        let that = this;
+        setTimeout(function(){
+          that.loading = false;
+        },500)
     }, function(response) {
         // 这里是处理错误的回调
         console.log(response)
@@ -57,5 +64,7 @@ export default {
 </script>
 
 <style>
-.item{height:200px;}
+
+.back{width:1rem;height:1rem;color:#fff;position:absolute;left:0;top:0;}
+.back i{font-size:.35rem;}
 </style>

@@ -1,40 +1,34 @@
 <template>
+    <div id="app">
+        <footer class="app-tabs">
+            <div class="button" >
+                <router-link to="/home">
+                    <i class="icon iconfont">&#xe681;</i>
+                    <div class="tab-text">首页</div>
+                </router-link>
+            </div>
+            <div class="button">
+                <router-link to="/list">
+                    <i class="icon iconfont">&#xe680;</i>
+                    <div class="tab-text">列表</div>
+                </router-link>
+            </div>
+            <div class="button">
+                <router-link to="/mine">
+                  <i class="icon iconfont">&#xe606;</i>
+                  <div class="tab-text">帐户</div>
+                </router-link>
+            </div>
+        </footer>
 
-  <div id="app">
-    <header>
-      logo
-    </header>
-
-      <footer class="app-tabs">
-        <div class="button" >
-          <router-link to="/home">
-              <i class="icon iconfont">&#xe606;</i>
-              <div class="tab-text">首页</div>
-          </router-link>
-        </div>
-        <div class="button">
-            <router-link to="/list">
-                <i class="icon iconfont">&#xe604;</i>
-                <div class="tab-text">列表</div>
-            </router-link>
-        </div>
-        <div class="button">
-            <router-link to="/mine">
-              <i class="icon iconfont">&#xe602;</i>
-              <div class="tab-text">帐户</div>
-            </router-link>
-        </div>
-      </footer>
-
-      <router-view class="view"></router-view>
-  </div>
+        <router-view class="view"></router-view>
+    </div>
 </template>
 
 
 <script>
 
-import index from './component/index.vue'
-
+import home from './component/home.vue'
 
 export default {
   data () {
@@ -43,7 +37,7 @@ export default {
     }
   },
   components: { 
-    index
+    home
   }
   
 }

@@ -1,21 +1,15 @@
 import Vue from 'vue'
-
 import App from './App.vue'
-
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
-
-Vue.use(VueRouter);
 
 Vue.config.debug = true;
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
-
 //const First = { template: '<div><h2>1  {{ $route.params.id }} </h2></div>' }
 
-import index from './component/index.vue'
 import home from './component/home.vue'
 import list from './component/list.vue'
 import mine from './component/mine.vue'
