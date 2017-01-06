@@ -15,11 +15,13 @@ import list from './component/list.vue'
 import mine from './component/mine.vue'
 import header from './component/header.vue'
 
-const Seconds = resolve => require(['./component/list.vue'], resolve)
+//const homes = resolve => require(['./component/home.vue'], resolve)
 
 const router = new VueRouter({
 	mode: 'history',
 	base: __dirname,
+	waitForData: true,
+
 	routes: [
 		{
 			path: '/',
@@ -49,7 +51,15 @@ const router = new VueRouter({
 	]
 })
 
+router.beforeEach((to, from, next) => {
+
+  const toPath = to.path;
+  const fromPath = from.path;
+  next();
+})
+
 const app = new Vue({
+
 	router: router,
 	render: h => h(App)
 }).$mount('#app')

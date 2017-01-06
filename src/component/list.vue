@@ -8,7 +8,7 @@
         <a href="javascript:history.go(-1);" class="back"><i class="icon iconfont">&#xe621;</i></a>
         {{name}}
     </header>
-    <div class="load-container load7"  v-if="loading">
+    <div class="load-container load1"  v-if="loading">
       <div class="loader">Loading...</div>
     </div>
 

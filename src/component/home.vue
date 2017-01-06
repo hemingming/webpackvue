@@ -1,5 +1,5 @@
 <template>
-	<div id="home">
+	<div id="home" @touchmove="scroll" @mousewheel="scroll" @scroll="scroll">
 		<header>{{name}}</header>
 
 		<!--swiper-->
@@ -21,16 +21,17 @@
 		</div>
 		<!--swiper eof-->
 
-		<div class="load-container load7"  v-if="loading">
+		<div class="load-container load1"  v-if="loading">
 			<div class="loader">Loading...</div>
 		</div>
 
-		<section class="items clearfix">
+		<section class="items clearfix" >
 			<div class="product"  v-for="item in items">
 				<div class="pic"><img :src="item.pic_path"></div>
 				<span class="name">{{item.title}}</span>
 				<span class="price">&yen; {{item.price}}</span>
 			</div>
+
 		</section>
 
 
@@ -40,6 +41,7 @@
 
 <script>
 	import Swiper from '../assets/scripts/swiper-3.4.1.min.js'
+	var scrollDisable = false;
 
 	export default {
 		data () {
@@ -50,8 +52,7 @@
 			}
 		},
 		mounted (){
-			this.loading = true;
-
+			
 		     var mySwiper = new Swiper('.swiper-container', {
 		       direction: 'horizontal',
 		       loop: true,
@@ -60,34 +61,61 @@
 		       //nextButton: '.swiper-button-next',
 		       //prevButton: '.swiper-button-prev'
 		     });
+		},
+	    created: function() {
+	        this.loadMore();
+	    },
+	    watch: {
+	        '$route': 'loadMore'
+	    },
+		methods: {
+			loadMore : function(){
+					this.loading = true;
+					scrollDisable = true;
+					let timer = null;
+					clearTimeout(timer);
+					timer = setTimeout(function () {
+						let newAry = [];
 
-		  	
-		    this.$http.jsonp('https://s.m.taobao.com/search', {}, {
-		        headers: {
+						this.$http.jsonp('https://s.m.taobao.com/search', {}, {
+						    headers: {},
+						    emulateJSON: true
+						}).then(function(response) {
+							let len = response.data.itemsArray.length;
+						    
+						    for(let i =0; i<len;i+=1){
+						    	response.data.itemsArray[i].pic_path = response.data.itemsArray[i].pic_path.split('_60x60.jpg')[0];
+						    	
+						    }
 
-		        },
-		        emulateJSON: true
-		    }).then(function(response) {
-		      // 这里是处理正确的回调
-		      	
-		        
-		        for(let i =0; i<response.data.itemsArray.length;i+=1){
-		        	response.data.itemsArray[i].pic_path = response.data.itemsArray[i].pic_path.split('_60x60.jpg')[0];
-		        	
-		        }
-		        this.items = response.data.itemsArray;
-		        let that = this;
-		        setTimeout(function(){
-		        	that.loading = false;
-		        },500)
-		        
+						    for(let j = 0; j < len; j++) {
+						      newAry.push(response.data.itemsArray[j]);
+						    }
+						    //this.items.push(response.data.itemsArray);
+						    this.items = [...this.items, ...newAry];
 
-		        
-		    }, function(response) {
-		        // 这里是处理错误的回调
-		        console.log('async error'+ response)
-		    });
+						    console.log(this.items);
+
+						    scrollDisable = false;
+						    this.loading = false;
+						}, function(response) {
+						    console.log('async error'+ response)
+						});
+
+						
+					}.bind(this), 500);
+
+			},
+			scroll : function(el){
+				if(document.body.scrollTop + window.innerHeight >= this.$el.clientHeight / 1.5) {
+					if (!scrollDisable){
+						this.loadMore();
+					}
+					
+				}
+			}
 		}
+
 	}
 </script>
 
